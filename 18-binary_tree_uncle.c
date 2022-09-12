@@ -1,9 +1,18 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_inorder - function that goes through a binary
- * tree using in-order traversal
- * @tree: is a pointer to the root node of the tree to traverse
- * @func: is a pointer to a function to call for each node
- * Return: 1 if node is a leaf, otherwise 0
+ * binary_tree_uncle - function that finds the uncle of a node
+ * @node: is a pointer to the node to find the uncle
+ * Return: a pointer to the uncle node
  */
+
+binary_tree_t *binary_tree_uncle(binary_tree_t *node)
+{
+	if (node == NULL || node->parent->parent == NULL)
+		return (NULL);
+
+	if (node->parent == node->parent->parent->right)
+		return (node->parent->parent->left);
+
+	return (node->parent->parent->right);
+}
